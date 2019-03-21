@@ -1,0 +1,30 @@
+<ActionBar title="Onit"></ActionBar>
+
+<FlexboxLayout>
+
+  <StackLayout class="form">
+
+      <Image src="~/images/Team Onit Logo.png">
+      </Image>
+
+      <TextField hint="Email Address" keyboardType="email"
+      autocorrect="false" autocapitalizationType="none"
+      [(ngModel)]="user.email" class="input input-border"> <!-- This text field is for email input -->
+    </TextField>
+
+    
+    <TextField hint="Password" secure="true"
+    [(ngModel)]="user.password" class="input input-border"> <!-- This text field is for password input -->
+    </TextField>
+
+    <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'"
+    class="btn btn-primary" (tap)="submit()"> <!-- This button is for sign in/sign up -->
+    </Button>
+
+    <Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'"
+    (tap)="toggleDisplay()"> <!-- This button is for switching between sign in/sign up -->
+    </Button>
+
+  </StackLayout>
+
+</FlexboxLayout>

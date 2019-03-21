@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
     styleUrls: ["home/home.component.css"]
   })
   export class HomeComponent { 
+    
 
     constructor(private router: Router){
 
@@ -16,5 +17,5 @@ import { Router } from "@angular/router";
       this.router.navigate(["list"]);
 
     }
-
+    //
   }

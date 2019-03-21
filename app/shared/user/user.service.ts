@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Http, Headers, Response } from "@angular/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
-
 import { User } from "./user.model";
 import { Config } from "../config";
 
@@ -16,9 +15,9 @@ export class UserService {
         }
 
         return this.http.post(
-            Config.apiUrl + "user/" + Config.appKey,
+            Config.apiUrl + "user/createAccount", //+ Config.appKey,
             JSON.stringify({
-                username: user.email,
+                name: user.name,
                 email: user.email,
                 password: user.password
             }),
@@ -30,8 +29,8 @@ export class UserService {
 
     getCommonHeaders() {
         let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-        headers.append("Authorization", Config.authHeader);
+        //headers.append("Content-Type", "application/json");
+        //headers.append("Authorization", Config.authHeader);
         return headers;
     }
 
@@ -42,16 +41,16 @@ export class UserService {
 
     login(user: User) {
         return this.http.post(
-            Config.apiUrl + "user/" + Config.appKey + "/login",
+            Config.apiUrl + "user/login", //Config.appKey + "/login",
             JSON.stringify({
-                username: user.email,
+                email: user.email,
                 password: user.password
             }),
             { headers: this.getCommonHeaders() }
         ).pipe(
             map(response => response.json()),
             tap(data => {
-                Config.token = data._kmd.authtoken
+                //Config.token = data._kmd.authtoken
             }),
             catchError(this.handleErrors)
         );

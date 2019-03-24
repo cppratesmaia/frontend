@@ -6,6 +6,7 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
+import { TaskService } from "./shared/tasks/task.service";
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { routes, navigatableComponents } from "./app.routing";
   declarations: [
     AppComponent,
     ...navigatableComponents
+  ],
+  providers: [
+    TaskService
   ],
   bootstrap: [AppComponent]
 })

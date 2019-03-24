@@ -11,19 +11,14 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent {
     user: User;
-    email;
+    email: string;
     isLoggingIn = true;
-   
+
     constructor(private router: Router, private userService: UserService) {
         this.user = new User();
-        //this.user.email = "mylogintest!@nativescript.org";
-        //this.user.password = "mypassword";
     }
 
-    
-
     ngOnInit() { }
-
 
     submit() {
         if (this.isLoggingIn) {
@@ -37,14 +32,13 @@ export class LoginComponent {
         this.isLoggingIn = !this.isLoggingIn;
     }
 
-
     login() {
         this.userService.login(this.user)
-          .subscribe(
-            () => this.router.navigate(["home"]),
-            (error) => alert("Unfortunately we could not find your account.")
-          );
-      }
+            .subscribe(
+                () => this.router.navigate(["home"]),
+                (error) => alert("Unfortunately we could not find your account.")
+            );
+    }
 
     signUp() {
         this.userService.register(this.user)

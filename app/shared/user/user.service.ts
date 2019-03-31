@@ -29,7 +29,7 @@ export class UserService {
     // Login user
     public login(user: User) {
 
-        console.log(`Loggin in ${user.email} : ${user.password}`); // Test - to be removed later
+        console.log(`Loggin in ${user.email} : ${user.password}`); // Test - to be removed later 
 
         return this.http.post(
             Config.apiUrl + "/user/login",

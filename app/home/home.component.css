@@ -2,17 +2,24 @@ FlexboxLayout {
     justify-content: center;
     align-items: center;
     background-size: cover;
-    /*background-image: url("~/images/time-management-background.jpg"); */
+    background-image: url("~/images/time-management-background.jpg");
 }
 
 StackLayout {
     width: 300;
     padding: 10 16;
     background-color: #f0f0f0;
+    align-content: center;
 }
 
 .btn-primary {
     background-color: #CB1D00;
     margin-left: 0;
     margin-right: 0;
+}
+
+.form label {
+    display: inline-block;
+
+		text-align: center;
 }

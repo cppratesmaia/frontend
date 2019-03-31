@@ -11,9 +11,16 @@ import { Affirmation } from "~/shared/tasks/affirmation.model";
 
 export class HomeComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+
+  }
 
   goToList() {
-    this.router.navigate(["List"]);
+    this.router.navigate(["list"]);
   }
+
+  goToTaskList() {
+    this.router.navigate(["tasklist"]);
+  }
+  
 }

@@ -1,4 +1,4 @@
-export class Task {
+export class Task { //
     _id?: string;
     title: string;
     details?: string;
@@ -6,4 +6,7 @@ export class Task {
     start_date: Date;
     due_date?: Date;
     complete: Boolean;
+
+
+    
 }

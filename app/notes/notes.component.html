@@ -1,0 +1,28 @@
+<!-- <ActionBar title="Notes">
+</ActionBar>
+
+<GridLayout>
+        <RadListView [items]="notesList"> RadListView is a pro UI element that points to an array of data
+          <ng-template let-item="item"> let-* is Angular's way of creating template variables within loops. Lets us refer to each item in the array as item
+            <Label [text]="item.name" class="p-15"></Label>
+          </ng-template>
+        </RadListView>
+</GridLayout> -->
+
+
+<ActionBar title="Notes"></ActionBar>
+
+<GridLayout rows="auto, *">
+
+  <GridLayout row="0" columns="*, auto" class="add-bar">
+    <TextField #notesTextField [(ngModel)] = "notes" hint="Enter a note" col="0"></TextField>
+    <Image src="~/images/add.png" (tap)="add()" col="1"></Image>
+  </GridLayout>
+
+  <RadListView row="1" [items]="groceryList">
+    <ng-template let-item="item">
+      <Label [text]="item.name" class="p-15"></Label>
+    </ng-template>
+  </RadListView>
+
+</GridLayout>

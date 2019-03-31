@@ -1,0 +1,44 @@
+<!--
+<ListView [items]="countries" (itemTap)="onItemTap($event)" class="list-group">
+    <ng-template let-country="item" let-i="index" let-odd="odd" let-even="even">
+         The item template can only have a single root view container (e.g. GridLayout, StackLayout, etc.)
+        <StackLayout orientation="horizontal" class="list-group-item">
+            <Label text="Country: " textWrap="true"></Label>
+            <Label [text]="country.name"></Label>
+        </StackLayout>
+    </ng-template>
+</ListView>
+-->
+
+<ActionBar title="tasklist"></ActionBar>
+
+<GridLayout rows="auto, *">
+
+  <GridLayout row="0" columns="*, auto" class="add-bar">
+
+    <TextField #taskTextField hint="Enter in an item" col="0" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input input-border"></TextField>
+    <Image src="~/images/add.png" (tap)="add()" col="1"></Image>
+
+  </GridLayout>
+
+
+  <RadListView row="1" [items]="taskList">
+    <ng-template let-item="item">
+      <Label [text]="item.name" class="p-15"></Label>
+    </ng-template>
+  </RadListView>
+  
+</GridLayout>
+
+<!--
+<ListView [items]="items" (itemTap)="onItemTap($event)" class="list-group">
+    <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+         The item template can only have a single root view container (e.g. GridLayout, StackLayout, etc.)
+        <StackLayout orientation="horizontal" class="list-group-item">
+            <Label text="Item : " textWrap="true"></Label>
+            <Label [text]="item.name"></Label>
+        </StackLayout>
+    </ng-template>
+</ListView>
+-->
+

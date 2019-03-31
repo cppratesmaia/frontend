@@ -2,7 +2,7 @@
 
 <FlexboxLayout>
 
-  <StackLayout class="form">
+  <StackLayout class="form" [class.signup]="!isLoggingIn">
 
       <Image src="~/images/Team Onit Logo.png">
       </Image>
@@ -17,7 +17,7 @@
       <TextField hint="Email Address" keyboardType="email"
       autocorrect="false" autocapitalizationType="none"
       [(ngModel)]="user.email" class="input input-border" id="emailField"> <!-- This text field is for email input -->
-    </TextField>
+      </TextField>
 
     <TextField hint="Password" secure="true"
     [(ngModel)]="user.password" class="input input-border" id="passwordField"> <!-- This text field is for password input -->

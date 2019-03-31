@@ -8,9 +8,9 @@ import { Task } from "~/shared/tasks/task.model";
   templateUrl: "list/list.component.html",
   styleUrls: ["list/list.component.css"]
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit {//
 
-  taskList: Task[] = [];
+  taskList: Task[] = []; //array for holding tasks
 
   constructor(private _taskService: TaskService) { }
 

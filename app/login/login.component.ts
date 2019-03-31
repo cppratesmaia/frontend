@@ -2,23 +2,26 @@ import { Component, OnInit } from "@angular/core";
 import { User } from "../shared/user/user.model";
 import { UserService } from "../shared/user/user.service";
 import { Router } from "@angular/router";
+import { Page } from "tns-core-modules/ui/page";
 
 @Component({
-    selector: "login",
+    selector: "Login",
     providers: [UserService],
     templateUrl: "login/login.component.html",
     styleUrls: ["login/login.component.css"]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     user: User;
     email: string;
     isLoggingIn = true;
 
-    constructor(private router: Router, private userService: UserService) {
+    constructor(private router: Router, private userService: UserService, private page: Page) {
         this.user = new User();
     }
-
-    ngOnInit() { }
+//
+    ngOnInit() { 
+        this.page.actionBarHidden = true;
+    }
 
     submit() {
         if (this.isLoggingIn) {

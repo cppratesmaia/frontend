@@ -4,7 +4,7 @@ import { Task } from "~/shared/tasks/task.model";
 import { Affirmation } from "~/shared/tasks/affirmation.model";
 
 @Component({
-  selector: "Home",
+  selector: "home",
   templateUrl: "home/home.component.html",
   styleUrls: ["home/home.component.css"]
 })

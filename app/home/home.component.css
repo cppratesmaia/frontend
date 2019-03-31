@@ -6,13 +6,13 @@ FlexboxLayout {
 }
 
 StackLayout {
-    width: 300;
+    width: 0%;
     padding: 10 16;
     background-color: #f0f0f0;
 }
 
 .btn-primary {
-    background-color: #CB1D00;
     margin-left: 0;
     margin-right: 0;
+    color: #f0f0f0
 }

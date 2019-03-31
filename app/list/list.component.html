@@ -1,9 +1,9 @@
-<ActionBar title="List page"></ActionBar>
+<ActionBar class="action-bar" title="Affirmation"></ActionBar>
 
 <FlexboxLayout>
-
-    <!--*ngFor is rendering all the user's tasks and displaying the title only-->
-    <Label text="{{task.title}}" *ngFor="let task of taskList"></Label>
-    <Button class="btn btn-primary" text="create" (tap)="create()"></Button>
-
+    <StackLayout>
+        <!--*ngFor is rendering all the user's tasks and displaying the title only-->
+        <Button  text="{{task.title}}" *ngFor="let task of taskList" (tap)="getAffirmation(task)"></Button>
+        <!-- <Button class="btn btn-primary" text="create" (tap)="create()"></Button> -->
+    </StackLayout>
 </FlexboxLayout>

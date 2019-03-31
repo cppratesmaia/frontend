@@ -1,10 +1,18 @@
-<ActionBar title="On It"></ActionBar>
+<ActionBar class="action-bar" title="On-It"></ActionBar>
 
-<FlexboxLayout>
+<StackLayout>
+    <StackLayout class="hr-light m-10"></StackLayout>
+    <Label class="h2" text="Welcome!"></Label>
+    <StackLayout class="hr-light m-10"></StackLayout>
+    <Label class="h3"
+        text="On-It helps you stay productive by giving you personalized affirmations based on a task that you need to do!"
+        textWrap="true"></Label>
+
+    <TextField hint="Type a task" [(ngModel)]="task.title" class="input input-border" id="taskField">
+    </TextField>
 
     <StackLayout>
-        <Button class="btn btn-primary" text="Go To List" (tap)="goToList()"> </Button>
-        <Label text="Is this centered?"></Label>
+        <Button class=" btn-primary" text="Go" (tap)="getAffirmation()"></Button>
     </StackLayout>
 
-</FlexboxLayout>
+</StackLayout>

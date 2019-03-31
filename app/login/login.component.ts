@@ -18,7 +18,13 @@ export class LoginComponent {
         this.user = new User();
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        // automatic login
+        this.user.email = "user@email.com.br";
+        this.user.password = "abc";
+        this.login();
+        // automatic login
+    }
 
     submit() {
         if (this.isLoggingIn) {

@@ -17,10 +17,13 @@ export class HomeComponent {
 
   goToList() {
     this.router.navigate(["list"]);
+    console.log("Navigated to list");
   }
 
   goToTaskList() {
     this.router.navigate(["tasklist"]);
+    console.log("Navigated to tasklist");
   }
+
   
 }

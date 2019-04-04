@@ -45,25 +45,12 @@ export class TaskService {
     }
 
     // Get Affirmation based on Task
-    public getAffirmation(task: Task, callback): void {
-
+    public getAffirmation(task: Task): Observable<Affirmation> {
         const url = `${Config.apiUrl}/tasks/${task._id}/assertion`;
-        const component = this;
-        console.log(url);
-        component._http.get(url, { headers: this._getHeaders() })
-            // .map((res) => res.json())
-            .subscribe(data => {
-                callback(data);
-            });
-        // return this._http.get(url, { headers: this._getHeaders() })
-        // .pipe(
-        //     map(response => response.json() as Affirmation),
-        //     tap(data => {
-        //         const affirmation = data.assertion;
-        //         const task = data.task;
-        //         console.log(`Affirmation ${affirmation}, Task ${task}`);
-        //     }),
-        // );
+        return this._http.get(url, { headers: this._getHeaders() })
+            .pipe(
+                map(response => response.json() as Affirmation)
+            );
     }
 
     // Get User Token and pass it as authorization

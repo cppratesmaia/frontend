@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { User } from "../shared/user/user.model";
 import { UserService } from "../shared/user/user.service";
 import { Router } from "@angular/router";
-import { Page } from "tns-core-modules/ui/page";
+import { Page } from "tns-core-modules/ui/page";//
 
 @Component({
     selector: "Login",

@@ -9,7 +9,7 @@
     </ng-template>
 </ListView>
 -->
-
+<!---->
 <ActionBar title="tasklist"></ActionBar>
 
 <GridLayout rows="auto, *">
@@ -22,8 +22,9 @@
   </GridLayout>
 
 
-  <RadListView row="1" [items]="taskList">
+  <RadListView row="1" [items]="taskList"> <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
     <ng-template let-item="item">
+
       <Label [text]="item.name" class="p-15"></Label>
     </ng-template>
   </RadListView>

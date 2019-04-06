@@ -10,22 +10,24 @@
 </ListView>
 -->
 <!---->
-<ActionBar title="tasklist"></ActionBar>
+<ActionBar title="tasklist">
+    <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+</ActionBar>
 
 <GridLayout rows="auto, *">
 
   <GridLayout row="0" columns="*, auto" class="add-bar">
 
     <TextField #taskTextField hint="Enter in an item" col="0" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input input-border"></TextField>
-    <Image src="~/images/add.png" (tap)="add()" col="1"></Image>
+    <Image src="~/images/add.png" (tap)="addTask()" col="1"></Image>
 
   </GridLayout>
 
 
-  <RadListView row="1" [items]="taskList"> <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
+  <RadListView row="1" [items]="TaskList"> <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
     <ng-template let-item="item">
 
-      <Label [text]="item.name" class="p-15"></Label>
+      <Label [text]="item.title" class="p-15"></Label>
     </ng-template>
   </RadListView>
   

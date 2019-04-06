@@ -3,7 +3,7 @@ import { Http, Headers, Response, URLSearchParams } from "@angular/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
 import { User } from "./user.model";
-import { Config } from "../config";
+import { Config } from "../config";//
 
 @Injectable()
 export class UserService {

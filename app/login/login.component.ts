@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.userService.register(this.user)
             .subscribe(
                 () => { //Success
-                    alert("Your account was successfully created.");
+                    alert("Your account was successfully created."); //
                     this.toggleDisplay();
                 }, //Failure
                 () => alert("Unfortunately we were unable to create your account.")

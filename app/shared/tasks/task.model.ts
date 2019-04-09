@@ -7,10 +7,4 @@ export class Task { //
     due_date?: Date;
     complete: Boolean; //Boolean that determines if the task is complete or not.
 
-    constructor() {
-        this.title = "Task";
-        this.start_date = new Date;
-        this.complete = false;
-    }
-
 }

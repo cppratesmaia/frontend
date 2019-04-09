@@ -12,19 +12,28 @@
 <!---->
 <ActionBar title="tasklist">
     <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+
+    <ActionItem text="add" android.position="popup"></ActionItem>
+
 </ActionBar>
 
-<GridLayout rows="auto, *">
+<GridLayout rows="auto, auto, auto, auto, auto"> <!-- This is for each part of the gridlayout -->
 
-  <GridLayout row="0" columns="*, auto" class="add-bar">
+  <GridLayout row="auto" columns="*, auto" class="add-bar">
 
-    <TextField #taskTextField hint="Enter in an item" col="0" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input input-border"></TextField>
+    <TextField #taskTitleTextField hint="Enter in an item" col="0" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input input-border"></TextField>
     <Image src="~/images/add.png" (tap)="addTask()" col="1"></Image>
-
+    
   </GridLayout>
 
 
-  <RadListView row="1" [items]="TaskList"> <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
+  <TextField #detailsTextField hint="Enter details here" row="1" class="input-bar"></TextField> <!-- TextField for details for the task -->
+
+  <TextField #priorityTextField hint="Set priority here. (low, mid, high)" row="2" class="input-bar"></TextField> <!-- TextField for priority of field -->
+
+  <TextField #dueDateTextField hint="Set Due Date here. (YYYY-MM-DD)" row="3" class="input-bar"></TextField>
+
+  <RadListView row="4" [items]="TaskList"> <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
     <ng-template let-item="item">
 
       <Label [text]="item.title" class="p-15"></Label>

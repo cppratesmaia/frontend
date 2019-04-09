@@ -1,6 +1,8 @@
 .add-bar {
     background-color: rgb(235, 235, 235);
+    /*
     padding: 5;
+    */
   }
   .add-bar Image {
     height: 25;
@@ -9,10 +11,26 @@
     margin-right: 10;
   }
   .add-bar TextField {
+    /*
     padding: 10;
+    */
   }
   Label {
     background-color: white;
     border-bottom-width: 1;
     border-bottom-color: gray;
   }
+
+.input-bar {
+  background-color: rgb(235, 235, 235);
+}
+
+.action-image {
+  position: absolute;
+  right: 0px;
+}
+
+.titlelabel {
+  
+
+}

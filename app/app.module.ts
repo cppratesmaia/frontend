@@ -7,6 +7,8 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
 import { TaskService } from "./shared/tasks/task.service";
+import { FloatBtnComponent } from "./float-btn.component";
+import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular";
 
 @NgModule({
   imports: [
@@ -14,10 +16,12 @@ import { TaskService } from "./shared/tasks/task.service";
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
+    NativeScriptUICalendarModule,
     NativeScriptRouterModule.forRoot(routes)
   ],
   declarations: [
     AppComponent,
+    FloatBtnComponent,
     ...navigatableComponents
   ],
   providers: [

@@ -1,18 +1,77 @@
 <ActionBar class="action-bar" title="On-It"></ActionBar>
 
-<StackLayout>
-    <StackLayout class="hr-light m-10"></StackLayout>
-    <Label class="h2" text="Welcome!"></Label>
-    <StackLayout class="hr-light m-10"></StackLayout>
-    <Label class="h3"
-        text="On-It helps you stay productive by giving you personalized affirmations based on a task that you need to do!"
-        textWrap="true"></Label>
+<TabView id="tabViewContainer" [(ngModel)]="tabSelectedIndex" (selectedIndexChanged)="onSelectedIndexChanged($event)">
 
-    <TextField hint="Type a task" [(ngModel)]="task.title" class="input input-border" id="taskField">
-    </TextField>
+    <!--Fist Tab Content -->
+    <StackLayout *tabItem="{title: 'Today'}">
 
-    <StackLayout>
-        <Button class=" btn-primary" text="Go" (tap)="getAffirmation()"></Button>
+        <AbsoluteLayout height="100%">
+            <ScrollView orientation="vertical" width="100%" *ngIf="taskOfTheDay">
+                <StackLayout class="container">
+
+                    <!-- Task of the day -->
+                    <Label class="header" text="Task of the day"></Label>
+                    
+                    <StackLayout class="task-card">
+
+                        <StackLayout orientation="horizontal" height="50">
+                            <Label class="task-title" width="75%" [text]="taskOfTheDay?.title"></Label>
+                            <Label class="priority-tag {{taskOfTheDay?.priority}}" width="25%" height="30"
+                                text="{{taskOfTheDay?.priority?.toUpperCase()}}"></Label>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label class="task-aff" text='"{{taskOfTheDay?.affirmation}}"' textWrap="true"></Label>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <!-- Other tasks due today -->
+                    <Label class="header" text="Other tasks due today"></Label>
+
+                    <StackLayout class="task-card" *ngFor="let task of taskList">
+
+                        <StackLayout orientation="horizontal" height="50">
+                            <Label class="task-title" width="75%" [text]="task.title"></Label>
+                            <Label class="priority-tag {{task.priority}}" width="25%" height="30"
+                                text="{{task.priority?.toUpperCase()}}"></Label>
+                        </StackLayout>
+
+
+                    </StackLayout>
+
+
+
+                </StackLayout>
+
+            </ScrollView>
+            <Label class="no-tasks" text="No tasks due today. :(" *ngIf="!taskOfTheDay"></Label>
+
+            <!-- Floating Button Layout -->
+            <StackLayout class="float-btn-container">
+                <float-btn text="+" (tap)="onTapCreate($event)"></float-btn>
+            </StackLayout>
+
+        </AbsoluteLayout>
     </StackLayout>
 
-</StackLayout>
+
+    <!-- Second Tab Content -->
+    <StackLayout *tabItem="{title: 'Calendar'}">
+
+        <RadCalendar [eventSource]="calendarEvents" eventsViewMode="Inline" selectionMode="Single" viewMode="Month"
+            transitionMode="Slide" locale="en-US" (dateSelected)="onDateSelected($event)"></RadCalendar>
+
+
+        <!-- (dateDeselected)="onDateDeselected($event)" 
+                (navigatedToDate)="onNavigatedToDate($event)" 
+                (navigatingToDateStarted)="onNavigatingToDateStarted($event)"
+                (viewModeChanged)="onViewModeChanged($event)" -->
+
+
+
+    </StackLayout>
+
+
+
+</TabView>

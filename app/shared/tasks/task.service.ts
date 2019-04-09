@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Task } from './task.model';
-import { Http, Headers, URLSearchParams } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Config } from '../config';
-import { map, tap, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { Affirmation } from './affirmation.model';
 
 @Injectable()
 export class TaskService {
+
+    public taskListUpdates = new Subject<Task>();
 
     constructor(private _http: Http) { }
 
@@ -20,12 +22,26 @@ export class TaskService {
             );
     }
 
+    // List Tasks by Due Date
+    public listTasksByQuery(date: Date): Observable<Task[]> {
+        const url = `${Config.apiUrl}/tasks/search?due_date=${date.toISOString()}`;
+        return this._http.get(url, { headers: this._getHeaders() })
+            .pipe(
+                map(response => response.json() as Task[])
+            );
+
+    }
+
     // Create new Task
     public createTask(task: Task): Observable<Task> {
         const url = `${Config.apiUrl}/tasks/create`;
         return this._http.post(url, task, { headers: this._getHeaders() })
             .pipe(
-                map(response => response.json() as Task)
+                map(response => {
+                    const task = response.json() as Task;
+                    this.taskListUpdates.next(task);
+                    return task;
+                })
             );
     }
 
@@ -34,7 +50,11 @@ export class TaskService {
         const url = `${Config.apiUrl}/tasks/${task._id}/edit`;
         return this._http.post(url, task, { headers: this._getHeaders() })
             .pipe(
-                map(response => response.json() as Task)
+                map(response => {
+                    const task = response.json() as Task;
+                    this.taskListUpdates.next(task);
+                    return task;
+                })
             );
     }
 
@@ -45,12 +65,12 @@ export class TaskService {
     }
 
     // Get Affirmation based on Task
-    public getAffirmation(task: Task): Observable<Affirmation> {
+    public getAffirmation(task: Task): Promise<Affirmation> {
         const url = `${Config.apiUrl}/tasks/${task._id}/assertion`;
         return this._http.get(url, { headers: this._getHeaders() })
             .pipe(
                 map(response => response.json() as Affirmation)
-            );
+            ).toPromise();
     }
 
     // Get User Token and pass it as authorization

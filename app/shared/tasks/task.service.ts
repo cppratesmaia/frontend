@@ -23,8 +23,9 @@ export class TaskService {
     }
 
     // List Tasks by Due Date
-    public listTasksByQuery(date: Date): Observable<Task[]> {
-        const url = `${Config.apiUrl}/tasks/search?due_date=${date.toISOString()}`;
+    public listTasksByQuery(from: Date, to: Date): Observable<Task[]> {
+        console.log(`querying tasks from ${from.toISOString()} to ${to.toISOString()}`)
+        const url = `${Config.apiUrl}/tasks/search?due_date_from=${from.toISOString()}&due_date_to=${to.toISOString()}`;
         return this._http.get(url, { headers: this._getHeaders() })
             .pipe(
                 map(response => response.json() as Task[])

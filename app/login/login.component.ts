@@ -20,10 +20,10 @@ export class LoginComponent {
 
     ngOnInit() {
         // automatic login
-        this.user.email = "user@email.com.br";
-        this.user.password = "abc";
-        // this.user.email = "email@e.com";
-        // this.user.password = "pwd";
+        // this.user.email = "user@email.com.br";
+        // this.user.password = "abc";
+        this.user.email = "email@e.com";
+        this.user.password = "pwd";
         this.login();
         // automatic login
     }

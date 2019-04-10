@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { Task } from "~/shared/tasks/task.model";
 import { TaskService } from "~/shared/tasks/task.service";
-import { Affirmation } from "~/shared/tasks/affirmation.model";
 import { SelectedIndexChangedEventData } from "tns-core-modules/ui/tab-view";
 import { GestureEventData } from "tns-core-modules/ui/gestures/gestures";
 import { first } from "rxjs/operators";
@@ -67,30 +66,45 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private loadTasks() {
+    // forces the date to be current and set to midnight
+    const from = new Date();
+    from.setHours(0, 0, 0, 0);
+    const to = new Date();
+    to.setHours(0, 0, 0, 0);
+    to.setDate(from.getDate() + 1);
+
     // Load tasks on initialization. It's being used by ngFor in home.component.html
-    this._taskService.listTasksByQuery(new Date()).pipe(first()).subscribe(async tasks => {
+    this._taskService.listTasksByQuery(from, to).pipe(first()).subscribe(async tasks => {
 
-      const sortedTasks = tasks.sort((t1, t2) => {
-        if (t1.priority.toLowerCase() === "high") {
-          return -1;
-        } else if (t1.priority.toLowerCase() === "medium" && t2.priority.toLowerCase() !== "high") {
-          return -1;
-        } else {
-          return 1;
+      // check if tasks exist for this date
+      if (tasks && tasks.length > 0) {
+
+        // chou...
+        const sortedTasks = tasks.sort((t1, t2) => {
+          if (t1.priority.toLowerCase() === "high") {
+            return -1;
+          } else if (t1.priority.toLowerCase() === "medium" && t2.priority.toLowerCase() !== "high") {
+            return -1;
+          } else {
+            return 1;
+          }
+        });
+
+        const firstTask = sortedTasks[0];
+        const aff = await this._taskService.getAffirmation(firstTask);
+        this.taskOfTheDay = {
+          title: firstTask.title,
+          priority: firstTask.priority ? firstTask.priority.toLowerCase() : 'low',
+          affirmation: aff.assertion
         }
-      });
 
-      const firstTask = sortedTasks[0];
-      const aff = await this._taskService.getAffirmation(firstTask);
-      this.taskOfTheDay = {
-        title: firstTask.title,
-        priority: firstTask.priority ? firstTask.priority.toLowerCase() : 'low',
-        affirmation: aff.assertion
+        this.taskList = sortedTasks.slice(1);
+
       }
-
-      this.taskList = sortedTasks.slice(1);
     });
+
   }
+
 
   ngOnDestroy() {
     this._sub.unsubscribe();

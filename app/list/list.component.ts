@@ -28,8 +28,13 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     // Load tasks on initialization. It's being used by ngFor in list.component.html
+    const from = new Date(this.currentDate);
+    from.setHours(0, 0, 0, 0);
+    const to = new Date(this.currentDate);
+    to.setHours(0, 0, 0, 0);
+    to.setDate(from.getDate() + 1);
 
-    this._taskService.listTasksByQuery(new Date(this.currentDate)).pipe(first()).subscribe(tasks => this.taskList = tasks);
+    this._taskService.listTasksByQuery(from, to).pipe(first()).subscribe(tasks => this.taskList = tasks);
 
     // this._taskService.listTasks().pipe(first()).subscribe(tasks => this.taskList = tasks);
     // this.currentDate;

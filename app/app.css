@@ -1,7 +1,7 @@
 @import "~nativescript-theme-core/css/sky.css";
 
 ActionBar {
-    background-color: black;
+    background-color: #0EA7E7;
     color: white;
 }
 
@@ -23,6 +23,10 @@ TextField {
     background-color: darkorange;
     margin-left: 0;
     margin-right: 0;
+}
+
+ListView{
+    padding: 10;
 }
 
 TextField {

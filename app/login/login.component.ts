@@ -6,7 +6,6 @@ import { Page } from "tns-core-modules/ui/page";//
 
 @Component({
     selector: "Login",
-    providers: [UserService],
     templateUrl: "login/login.component.html",
     styleUrls: ["login/login.component.css"]
 })

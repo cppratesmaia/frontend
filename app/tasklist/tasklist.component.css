@@ -10,27 +10,32 @@
     margin-left: 10;
     margin-right: 10;
   }
-  .add-bar TextField {
-    /*
-    padding: 10;
-    */
-  }
-  Label {
-    background-color: white;
-    border-bottom-width: 1;
-    border-bottom-color: gray;
-  }
+  
+TextField {
+  margin-bottom: -10;
+  margin-top: 10;
+  background-color: whitesmoke;
+}
 
 .input-bar {
-  background-color: rgb(235, 235, 235);
+  background-color: whitesmoke;
+  margin-top: 10;
+  margin-bottom: 10;
 }
+
+.task-stack {
+padding: 10;
+}
+
+/* PickerPage ListView {
+  background-color: pink;
+  margin-top: 20;
+  margin-bottom: 20;
+  padding: 10;
+  background-color: whitesmoke;
+} */
 
 .action-image {
   position: absolute;
   right: 0px;
-}
-
-.titlelabel {
-  
-
 }

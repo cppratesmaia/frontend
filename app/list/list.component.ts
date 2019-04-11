@@ -3,6 +3,7 @@ import { TaskService } from "~/shared/tasks/task.service";
 import { first } from "rxjs/operators";
 import { Task } from "~/shared/tasks/task.model";
 import { Router } from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { dayProperty } from "tns-core-modules/ui/date-picker/date-picker";
 
 @Component({
@@ -14,7 +15,7 @@ export class ListComponent implements OnInit {
   currentDate;
   taskList: Task[] = [];
 
-  constructor(private router: Router, private _taskService: TaskService) {
+  constructor(private router: Router, private routerExtensions: RouterExtensions, private _taskService: TaskService) {
     this.currentDate = this.router.getCurrentNavigation().extras.state;
   }
 
@@ -38,6 +39,12 @@ export class ListComponent implements OnInit {
 
     // this._taskService.listTasks().pipe(first()).subscribe(tasks => this.taskList = tasks);
     // this.currentDate;
+  }
+
+  // Function for the back button in the action bar.
+  public goBack() {
+    this.routerExtensions.backToPreviousPage();
+    console.log("Returned to previous page");
   }
 }
 

@@ -8,75 +8,50 @@ import { Page } from "tns-core-modules/ui/page"
 
 @Component({
     selector: "tasklist",
-    templateUrl:"tasklist/tasklist1.component.html",
+    templateUrl: "tasklist/tasklist1.component.html",
     styleUrls: ["tasklist/tasklist.component.css"],
-    providers: [TaskService]
 })
 
 export class TaskListComponent implements OnInit {
-    TaskList: Task[] = []; //Array for Task objects we've imported
-    Task: Task; //This is the task object we imported
+    task: Task; //This is the task object we imported
 
-constructor(private taskService: TaskService, private routerExtensions: RouterExtensions) {
-    this.Task = new Task(); //Initializes a Task object when the page boots up
+    currentDay: number = new Date().getDate();
+    currentMonth: number = new Date().getMonth() + 1;
+    currentYear: number = new Date().getFullYear();
 
-    this.TaskList.push({ title: "Hello and Welcome to the TaskList", complete: false, start_date: new Date });
-    this.TaskList.push({ title: "Here is where you can keep track of your tasks", complete: false, start_date: new Date});
-    this.TaskList.push({ title: "Try adding a Task of your choice", complete: false, start_date: new Date});
+    listPickerPriority: Array<string> = ["Low", "Medium", "High"];
 
-    this.getTasks(this.TaskList)
-}
+    constructor(private taskService: TaskService, private routerExtensions: RouterExtensions) {
+        this.task = new Task(); //Initializes a Task object when the page boots up
+    }
 
-addTask() {
-    this.Task.start_date = new Date(); //Gives the task start date the current date.
-    console.log("Date Added: " + this.Task.start_date);
-    
-    this.taskService.createTask({
-        title: this.Task.title,
-        details: this.Task.details,
-        priority: this.Task.priority,
-        complete: false,
-        due_date: this.Task.due_date,
-        start_date: this.Task.start_date
-    }).subscribe(  //This should push the Task to Backend
-        (Task) => { console.log("A task has been created") },
-        (error) => { alert("Unfortunately, the task could not be created.") }
-    ); 
-    this.TaskList.push(this.Task);
-    console.log("Task has been added to the TaskList");    
+    public addTask() {
+        this.taskService.createTask({
+            title: this.task.title,
+            details: this.task.details,
+            priority: this.task.priority.toLowerCase(),
+            complete: false,
+            due_date: this.task.due_date,
+            start_date: this.task.start_date
+        }).subscribe(  //This should push the Task to Backend
+            (Task) => { console.log("A task has been created") },
+            (error) => { alert("Unfortunately, the task could not be created.") }
+        );
+        console.log("Task has been added to the TaskList");
+        console.log("Task Title: " + this.task.title);
+        console.log("Task Details: " + this.task.details);
+        console.log("Task Priority: " + this.task.priority);
+        console.log("Date Start: " + this.task.start_date);
+        console.log("Task Due Date: " + this.task.due_date);
+    }
 
-    console.log("Task Title: " + this.Task.title);
-    console.log("Task Details: " + this.Task.details);
-    console.log("Task Priority: " + this.Task.priority);
-    console.log("Task Due Date: " + this.Task.due_date)
+    ngOnInit() { }
 
-}
-
-ngOnInit() {
-
-}
-
-public getTasks(TaskList: Task[]) { //This function will call the backend and get the list from the back end.
-    this.taskService.listTasks().subscribe(
-        () => { 
-            for (let i of TaskList) {
-                
-            }
-
-        },
-        (error) => { alert("Unfortunately, we could not retrieve your tasks.")}
-    );
-}
-
-public goBack() { //function for the back button in the action bar.
-    this.routerExtensions.backToPreviousPage();
-    console.log("Returned to previous page");
+    public goBack() { //function for the back button in the action bar.
+        this.routerExtensions.backToPreviousPage();
+        console.log("Returned to previous page");
+    }
 }
 
 
 
-
-}
-   
-
-   

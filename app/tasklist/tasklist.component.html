@@ -1,56 +1,36 @@
-<!--
-<ListView [items]="countries" (itemTap)="onItemTap($event)" class="list-group">
-    <ng-template let-country="item" let-i="index" let-odd="odd" let-even="even">
-         The item template can only have a single root view container (e.g. GridLayout, StackLayout, etc.)
-        <StackLayout orientation="horizontal" class="list-group-item">
-            <Label text="Country: " textWrap="true"></Label>
-            <Label [text]="country.name"></Label>
-        </StackLayout>
-    </ng-template>
-</ListView>
--->
-<!---->
 <ActionBar title="tasklist">
-    <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+  <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
 
-    <ActionItem text="add" android.position="popup"></ActionItem>
+  <ActionItem text="add" android.position="popup"></ActionItem>
 
 </ActionBar>
 
-<GridLayout rows="auto, auto, auto, auto, auto"> <!-- This is for each part of the gridlayout -->
+<GridLayout rows="auto, auto, auto, auto, auto">
+  <!-- This is for each part of the gridlayout -->
 
   <GridLayout row="auto" columns="*, auto" class="add-bar">
 
-    <TextField #taskTitleTextField hint="Enter in an item" col="0" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input input-border"></TextField>
+    <TextField #taskTitleTextField hint="Enter in an item" col="0" (textChange)="onTextChange($event)"
+      (returnPress)="onReturn($event)" class="input input-border"></TextField>
     <Image src="~/images/add.png" (tap)="addTask()" col="1"></Image>
-    
+
   </GridLayout>
 
 
-  <TextField #detailsTextField hint="Enter details here" row="1" class="input-bar"></TextField> <!-- TextField for details for the task -->
+  <TextField #detailsTextField hint="Enter details here" row="1" class="input-bar"></TextField>
+  <!-- TextField for details for the task -->
 
-  <TextField #priorityTextField hint="Set priority here. (low, mid, high)" row="2" class="input-bar"></TextField> <!-- TextField for priority of field -->
+  <TextField #priorityTextField hint="Set priority here. (low, mid, high)" row="2" class="input-bar"></TextField>
+  <!-- TextField for priority of field -->
 
   <TextField #dueDateTextField hint="Set Due Date here. (YYYY-MM-DD)" row="3" class="input-bar"></TextField>
 
-  <RadListView row="4" [items]="TaskList"> <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
+  <RadListView row="4" [items]="TaskList">
+    <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
     <ng-template let-item="item">
 
       <Label [text]="item.title" class="p-15"></Label>
     </ng-template>
   </RadListView>
-  
+
 </GridLayout>
-
-<!--
-<ListView [items]="items" (itemTap)="onItemTap($event)" class="list-group">
-    <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-         The item template can only have a single root view container (e.g. GridLayout, StackLayout, etc.)
-        <StackLayout orientation="horizontal" class="list-group-item">
-            <Label text="Item : " textWrap="true"></Label>
-            <Label [text]="item.name"></Label>
-        </StackLayout>
-    </ng-template>
-</ListView>
--->
-

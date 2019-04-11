@@ -1,4 +1,6 @@
-<ActionBar class="action-bar" title="{{currentDate.toISOString() | date: 'fullDate'}}"></ActionBar>
+<ActionBar class="action-bar" title="{{currentDate.toISOString() | date: 'fullDate'}}">
+    <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+</ActionBar>
 
 
 <StackLayout>
@@ -25,7 +27,7 @@
 
         <!-- Floating Button Layout -->
         <StackLayout class="float-btn-container">
-            <float-btn text="+"></float-btn>
+            <float-btn text="+" (tap)="onTapCreate($event)"></float-btn>
         </StackLayout>
 
     </AbsoluteLayout>

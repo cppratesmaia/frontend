@@ -1,31 +1,35 @@
-<ActionBar title="Create Task">
-    <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
-    <ActionItem ios.systemIcon="16" ios.position="right" text="add" android.position="popup" (tap)="addTask()" ></ActionItem>
+<ActionBar class="action-bar" title="Create Task">
+  <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+  <ActionItem (tap)="addTask()" android.systemIcon="ic_menu_add"></ActionItem>
 </ActionBar>
 
-<GridLayout rows="auto, auto"> <!-- GridLayout that holds everything in the page. 1st row for the textFields. 2nd row for the radList -->
+<GridLayout rows="auto, auto">
+  <!-- GridLayout that holds everything in the page. 1st row for the textFields. 2nd row for the radList -->
 
-<StackLayout row="0"> <!-- This  is for the text field -->
+  <StackLayout class="task-stack">
 
-    <TextField #taskTitleTextField [(ngModel)]="Task.title" hint="Enter in the title of the task here" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input-bar"></TextField>
+    <!-- TextField for title of the task -->
+    <TextField class="input-bar" #taskTitleTextField [(ngModel)]="task.title" hint="Title"
+      (returnPress)="onReturn($event)" row="0"></TextField>
 
-    <TextField #detailsTextField [(ngModel)]="Task.details"  hint="Enter details here" row="1" class="input-bar"></TextField> <!-- TextField for details for the task -->
+    <!-- TextField for details for the task -->
+    <TextField class="input-bar" #detailsTextField [(ngModel)]="task.details" hint="Details" row="1">
+    </TextField>
 
-    <TextField #priorityTextField [(ngModel)]="Task.priority" hint="Set priority here. (low, mid, high)" row="2" class="input-bar"></TextField> <!-- TextField for priority of field -->
+    <!-- Priority -->
+    <PickerField class="input-bar" pickerTitle="Priority" itemTemplate="input-bar" hint="Priority" [items]="listPickerPriority"
+      #priorityPickerField [(ngModel)]="task.priority" row="2">
+    </PickerField>
 
-    <TextField #dueDateTextField [(ngModel)]="Task.Date" hint="Set Due Date here. (YYYY-MM-DD)" row="3" class="input-bar"></TextField>
+    <!-- Start Date and Time -->
+    <DatePickerField class="input-bar" hint="Start date" [(ngModel)]="task.start_date" [year]="currentYear"
+      [month]="currentMonth" [day]="currentDay" minDate="1970-01-01" maxDate="2100-12-31" row="3"></DatePickerField>
+    <TimePickerField class="input-bar" hint="Time" row="4"></TimePickerField>
 
-</StackLayout>
+    <!-- Due Date and Time -->
+    <DatePickerField class="input-bar" hint="Due date" [(ngModel)]="task.due_date" [year]="currentYear"
+      [month]="currentMonth" [day]="currentDay" minDate="1970-01-01" maxDate="2100-12-31" row="5"></DatePickerField>
+    <TimePickerField class="input-bar" hint="Time" row="6"></TimePickerField>
 
-<RadListView row="1" [items]="TaskList"> <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
-    <ng-template let-item="item">
-      <Label [text]="item.title" class="p-15"></Label>
-      
-    </ng-template>
-  </RadListView>
-
-
+  </StackLayout>
 </GridLayout>
-
-
-

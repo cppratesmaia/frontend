@@ -62,6 +62,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public onTapCreate(args: GestureEventData) {
+    this.router.navigate(["tasklist"]);
     console.log("tap");
   }
 

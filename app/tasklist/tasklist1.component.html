@@ -1,4 +1,4 @@
-<ActionBar title="tasklist1">
+<ActionBar title="Create Task">
     <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
     <ActionItem ios.systemIcon="16" ios.position="right" text="add" android.position="popup" (tap)="addTask()" ></ActionItem>
 </ActionBar>
@@ -7,20 +7,20 @@
 
 <StackLayout row="0"> <!-- This  is for the text field -->
 
-    <TextField #taskTitleTextField hint="Enter in the title of the task here" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input-bar"></TextField>
+    <TextField #taskTitleTextField [(ngModel)]="Task.title" hint="Enter in the title of the task here" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input-bar"></TextField>
 
-    <TextField #detailsTextField hint="Enter details here" row="1" class="input-bar"></TextField> <!-- TextField for details for the task -->
+    <TextField #detailsTextField [(ngModel)]="Task.details"  hint="Enter details here" row="1" class="input-bar"></TextField> <!-- TextField for details for the task -->
 
-    <TextField #priorityTextField hint="Set priority here. (low, mid, high)" row="2" class="input-bar"></TextField> <!-- TextField for priority of field -->
+    <TextField #priorityTextField [(ngModel)]="Task.priority" hint="Set priority here. (low, mid, high)" row="2" class="input-bar"></TextField> <!-- TextField for priority of field -->
 
-    <TextField #dueDateTextField hint="Set Due Date here. (YYYY-MM-DD)" row="3" class="input-bar"></TextField>
+    <TextField #dueDateTextField [(ngModel)]="Task.Date" hint="Set Due Date here. (YYYY-MM-DD)" row="3" class="input-bar"></TextField>
 
 </StackLayout>
 
 <RadListView row="1" [items]="TaskList"> <!-- RadListView is what lets use display the contents of an array. [items] is what let's us indicate what array we're using.-->
     <ng-template let-item="item">
-
       <Label [text]="item.title" class="p-15"></Label>
+      
     </ng-template>
   </RadListView>
 

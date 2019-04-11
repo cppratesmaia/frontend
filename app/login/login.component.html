@@ -9,15 +9,15 @@
 
         
       
-      <TextField hint="Name"
-      [(ngModel)]="user.name" class="input input-border" id="nameField" [visibility]="isLoggingIn ? 'collapsed' : 'visible' "> <!-- This text field is for name input -->
-      </TextField>
+    <TextField hint="Name"
+    [(ngModel)]="user.name" class="input input-border" id="nameField" [visibility]="isLoggingIn ? 'collapsed' : 'visible' "> <!-- This text field is for name input -->
+    </TextField>
       
 
-      <TextField hint="Email Address" keyboardType="email"
-      autocorrect="false" autocapitalizationType="none"
-      [(ngModel)]="user.email" class="input input-border" id="emailField"> <!-- This text field is for email input -->
-      </TextField>
+    <TextField hint="Email Address" keyboardType="email"
+    autocorrect="false" autocapitalizationType="none"
+    [(ngModel)]="user.email" class="input input-border" id="emailField"> <!-- This text field is for email input -->
+    </TextField>
 
     <TextField hint="Password" secure="true"
     [(ngModel)]="user.password" class="input input-border" id="passwordField"> <!-- This text field is for password input -->

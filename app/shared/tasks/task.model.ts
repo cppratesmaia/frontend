@@ -1,4 +1,4 @@
-export class Task { //
+export class Task { 
     _id?: string;
     title: string; //title of the task
     details?: string;

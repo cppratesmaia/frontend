@@ -12,7 +12,6 @@ import { Page } from "tns-core-modules/ui/page";//
 })
 export class LoginComponent implements OnInit {
     user: User;
-    email: string;
     isLoggingIn = true;
 
     constructor(private router: Router, private userService: UserService, private page: Page) {
@@ -38,7 +37,8 @@ export class LoginComponent implements OnInit {
     login() {
         this.userService.login(this.user)
             .subscribe(
-                () => this.router.navigate(["home"]),
+                () => { this.router.navigate(["home"])    
+            },
                 (error) => alert("Unfortunately we could not find your account.")
             );
     }

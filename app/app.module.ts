@@ -5,9 +5,11 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 
+
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
 import { TaskService } from "./shared/tasks/task.service";
+import { UserService } from "./shared/user/user.service";
 
 @NgModule({
   imports: [
@@ -16,14 +18,15 @@ import { TaskService } from "./shared/tasks/task.service";
     NativeScriptHttpModule,
     NativeScriptRouterModule,
     NativeScriptRouterModule.forRoot(routes),
-    NativeScriptUIListViewModule
+    NativeScriptUIListViewModule,
   ],
   declarations: [
     AppComponent,
     ...navigatableComponents
   ],
   providers: [
-    TaskService
+    TaskService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

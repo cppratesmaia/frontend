@@ -17,9 +17,16 @@ export class LoginComponent implements OnInit {
     constructor(private router: Router, private userService: UserService, private page: Page) {
         this.user = new User();
     }
-//
-    ngOnInit() { 
+
+    ngOnInit() {
         this.page.actionBarHidden = true;
+        // automatic login
+        // this.user.email = "user@email.com.br";
+        // this.user.password = "abc";
+        // this.user.email = "email@e.com";
+        // this.user.password = "pwd";
+        // this.login();
+        // automatic login
     }
 
     submit() {
@@ -37,8 +44,9 @@ export class LoginComponent implements OnInit {
     login() {
         this.userService.login(this.user)
             .subscribe(
-                () => { this.router.navigate(["home"])    
-            },
+                () => {
+                    this.router.navigate(["home"])
+                },
                 (error) => alert("Unfortunately we could not find your account.")
             );
     }

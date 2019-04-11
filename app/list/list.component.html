@@ -1,9 +1,35 @@
-<ActionBar title="List page"></ActionBar>
+<ActionBar class="action-bar" title="{{currentDate.toISOString() | date: 'fullDate'}}"></ActionBar>
 
-<FlexboxLayout>
 
+<StackLayout>
+
+    <AbsoluteLayout height="100%">
+        <ScrollView orientation="vertical" width="100%">
+            <StackLayout class="container">
+
+                <StackLayout class="task-card" *ngFor="let task of taskList">
+
+                    <StackLayout orientation="horizontal" height="50">
+                        <Label class="task-title" width="75%" [text]="task.title"></Label>
+                        <Label class="priority-tag {{task.priority}}" width="25%" height="30"
+                            text="{{task.priority?.toUpperCase()}}"></Label>
+                    </StackLayout>
+
+
+                </StackLayout>
+
+
+
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Floating Button Layout -->
+        <StackLayout class="float-btn-container">
+            <float-btn text="+"></float-btn>
+        </StackLayout>
+
+    </AbsoluteLayout>
     <!--*ngFor is rendering all the user's tasks and displaying the title only-->
-    <Label text="{{task.title}}" *ngFor="let task of taskList"></Label>
-    <Button class="btn btn-primary" text="create" (tap)="create()"></Button>
-
-</FlexboxLayout>
+    <!-- <Button class="" text="{{task.title}}" *ngFor="let task of taskList"></Button> -->
+    <!-- <Button class="btn btn-primary" text="create" (tap)="create()"></Button> -->
+</StackLayout>

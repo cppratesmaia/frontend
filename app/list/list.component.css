@@ -1,0 +1,53 @@
+.container {
+    padding: 10;
+}
+
+.header {
+    padding: 5 0;
+    font-size: 16;
+}
+
+.task-card {
+    padding: 15;
+    margin-bottom: 10;
+    background: white;
+    border-radius: 4;
+    border-left-width: 1;
+    border-top-width: 1;
+    border-right-width: 3;
+    border-bottom-width: 3;
+    border-color: rgba(0, 0, 0, .2);
+}
+
+.task-card .task-title {
+    font-size: 18;
+    font-weight: 500;
+}
+
+.task-card .priority-tag {
+    /* background: whitesmoke; */
+    text-align: center;
+    padding-top: 5;
+    margin-top: -20;
+}
+
+.task-card .priority-tag.high {
+    color: red;
+}
+
+.task-card .priority-tag.medium {
+    color: orange;
+}
+
+.task-card .priority-tag.low {
+    color: green;
+}
+
+.task-card .task-aff {
+    font-size: 16;
+}
+
+.float-btn-container {
+    margin-top: 82%;
+    margin-left: 80%;
+}

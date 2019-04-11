@@ -7,7 +7,7 @@
         "NativeScript"
     ],
     "nativescript": {
-        "id": "org.nativescript.groceriesng",
+        "id": "org.nativescript.onit",
         "tns-android": {
             "version": "5.2.0"
         },

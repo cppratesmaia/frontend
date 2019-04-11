@@ -1,34 +1,34 @@
-<ActionBar title="Onit"></ActionBar>
+<ActionBar title="On-It" actionBarHidden="true" loaded="onPageLoaded"></ActionBar>
+
 
 <FlexboxLayout>
 
   <StackLayout class="form" [class.signup]="!isLoggingIn">
 
-      <Image src="~/images/Team Onit Logo.png">
-      </Image>
+    <Image src="~/images/TeamOnitLogo.png">
+    </Image>
 
-        
-      
-    <TextField hint="Name"
-    [(ngModel)]="user.name" class="input input-border" id="nameField" [visibility]="isLoggingIn ? 'collapsed' : 'visible' "> <!-- This text field is for name input -->
-    </TextField>
-      
-
-    <TextField hint="Email Address" keyboardType="email"
-    autocorrect="false" autocapitalizationType="none"
-    [(ngModel)]="user.email" class="input input-border" id="emailField"> <!-- This text field is for email input -->
+    <TextField hint="Name" [(ngModel)]="user.name" class="input input-border" id="nameField"
+      [visibility]="isLoggingIn ? 'collapsed' : 'visible' ">
+      <!-- This text field is for name input -->
     </TextField>
 
-    <TextField hint="Password" secure="true"
-    [(ngModel)]="user.password" class="input input-border" id="passwordField"> <!-- This text field is for password input -->
+
+    <TextField hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none"
+      [(ngModel)]="user.email" class="input input-border" id="emailField">
+      <!-- This text field is for email input -->
     </TextField>
 
-    <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'"
-    class="btn btn-primary" (tap)="submit()" id="signINButton"> <!-- This button is for sign in/sign up -->
+    <TextField hint="Password" secure="true" [(ngModel)]="user.password" class="input input-border" id="passwordField">
+      <!-- This text field is for password input -->
+    </TextField>
+
+    <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'" class="btn btn-primary" (tap)="submit()" id="signINButton">
+      <!-- This button is for sign in/sign up -->
     </Button>
 
-    <Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'"
-    (tap)="toggleDisplay()" id="signUPButton" > <!-- This button is for switching between sign in/sign up -->
+    <Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'" (tap)="toggleDisplay()" id="signUPButton">
+      <!-- This button is for switching between sign in/sign up -->
     </Button>
 
   </StackLayout>

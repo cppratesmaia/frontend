@@ -1,8 +1,8 @@
-@import "~nativescript-theme-core/css/core.light.css";
+@import "~nativescript-theme-core/css/sky.css";
 
 ActionBar {
-  background-color: lightskyblue;
-  color: white;
+    background-color: black;
+    color: white;
 }
 
 .test {
@@ -10,21 +10,22 @@ ActionBar {
 }
 
 Image {
-  margin-bottom: 20;
-  height: 70;
+    margin-bottom: 20;
+    height: 70;
 }
 
-Button, TextField {
-  margin-bottom: 10;
+Button,
+TextField {
+    margin-bottom: 10;
 }
 
 .btn-primary {
-  background-color: #CB1D00;
-  margin-left: 0;
-  margin-right: 0;
+    background-color: darkorange;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 TextField {
-  /*placeholder-color: #C4AFB4; */
-  color: black;
+    /*placeholder-color: #C4AFB4; */
+    color: black;
 }
